@@ -2,6 +2,7 @@ Net Sales Units by Category =
 // this is the measure, which dynamically calculate the cover category 
 // in specific Channels and stores per each Link Line depends on selected slicers.
 // Cover categories are predefined in the custom table.
+Net Sales Units by Category = 
 VAR _table =
 ADDCOLUMNS(
     'ProductLinkLine',
@@ -12,15 +13,15 @@ ADDCOLUMNS(
     "Cover",
     VAR _sales =
     CALCULATE(
-    SUM(Trading[Adj Net Sales Units]),
-    Channel[Channel Id] IN {10,20},
-    Location[Location Type] = "Store"
+        SUM(Trading[Adj Net Sales Units]),
+        Channel[Channel Id] IN {10,20},
+        Location[Location Type] = "Store"
     )
     VAR _stock = 
     CALCULATE(
-    SUM(Stock[Stock Quantity]),
-    Channel[Channel Id] IN {10,20},
-    Location[Location Type] = "Store"
+        SUM(Stock[Stock Quantity]),
+        Channel[Channel Id] IN {10,20},
+        Location[Location Type] = "Store"
     )
     VAR _cover =
     DIVIDE(
